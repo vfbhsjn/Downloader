@@ -24,6 +24,8 @@ class Database:
 
     async def init_db(self) -> None:
         """Open the connection and create all tables."""
+        import os
+        os.makedirs(os.path.dirname(self.db_path) or ".", exist_ok=True)
         self._db = await aiosqlite.connect(self.db_path)
         self._db.row_factory = aiosqlite.Row
         await self._db.executescript(
