@@ -8,7 +8,7 @@ from telegram.ext import ApplicationBuilder
 
 from bot import config
 from bot.database import Database
-from bot.handlers import admin, admin_state, callback, download, errors, help as help_handler, start
+from bot.handlers import admin, admin_state, callback, download, errors, help as help_mod, start
 
 
 def setup_logging() -> None:
@@ -75,7 +75,7 @@ def main() -> None:
 
     # Message handlers (also used by the admin state machine).
     start_handler = start.get_handler()
-    help_handler = help_handler.get_handler()
+    help_handler = help_mod.get_handler()
     admin_handler = admin.get_handler()
     admin_state_handler = admin_state.get_handler()
     download_handler = download.get_handler()
